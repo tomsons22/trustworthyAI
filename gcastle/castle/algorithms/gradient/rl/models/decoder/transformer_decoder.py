@@ -14,7 +14,7 @@
 # limitations under the License.
 
 import tensorflow as tf
-from tensorflow.contrib import distributions as distr
+from tensorflow_probability import distributions as distr
 
 from ..encoder import TransformerEncoder
 # from config_graph import get_config, print_config

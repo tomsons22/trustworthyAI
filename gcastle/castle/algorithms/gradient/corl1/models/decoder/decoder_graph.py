@@ -14,8 +14,9 @@
 # limitations under the License.
 
 import tensorflow as tf
-from tensorflow.contrib.rnn import LSTMCell, GRUCell, MultiRNNCell, DropoutWrapper
-from tensorflow.contrib import distributions as distr
+from tensorflow.keras.layers import LSTMCell, GRUCell
+from tensorflow.compat.v1.nn.rnn_cell import MultiRNNCell, DropoutWrapper
+from tensorflow_probability import distributions as distr
 import numpy as np
 
 # RNN decoder for pointer network
