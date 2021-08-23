@@ -21,7 +21,8 @@ https://www.github.com/kyubyong/transformer
 
 import numpy as np
 import tensorflow as tf
-from tensorflow.contrib.rnn import LSTMCell, DropoutWrapper
+from tensorflow.keras.layers import LSTMCell
+from tensorflow.compat.v1.nn.rnn_cell import MultiRNNCell
 
 
 class LSTMEncoder(object):

@@ -14,7 +14,8 @@
 # limitations under the License.
 
 import tensorflow as tf
-from tensorflow.contrib.rnn import LSTMCell, MultiRNNCell, DropoutWrapper
+from tensorflow.keras.layers import LSTMCell, GRUCell
+from tensorflow.compat.v1.nn.rnn_cell import MultiRNNCell, DropoutWrapper
 import numpy as np
 
 class Critic(object):

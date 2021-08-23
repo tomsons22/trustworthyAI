@@ -15,8 +15,8 @@
 
 import numpy as np
 import tensorflow as tf
-from tensorflow.contrib.rnn import LSTMCell
-from tensorflow.contrib import distributions as distr
+from tensorflow.keras.layers import LSTMCell
+from tensorflow_probability import distributions as distr
 
 
 class Pointer_decoder(object):

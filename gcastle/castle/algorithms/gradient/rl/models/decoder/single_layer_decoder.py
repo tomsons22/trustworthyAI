@@ -14,7 +14,7 @@
 # limitations under the License.
 
 import tensorflow as tf
-from tensorflow.contrib import distributions as distr
+from tensorflow_probability import distributions as distr
 
 
 class SingleLayerDecoder(object):
