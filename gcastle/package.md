@@ -44,7 +44,8 @@ gCastle requires:
 * matplotlib (>=2.1.2)
 * networkx (>= 2.5)
 * torch (>= 1.4.0)
-* tensorflow (>= 1.15.0)
+* tensorflow (>=2.6.0)
+* tensorflow_probability (>=0.13.0)
 
 ### PIP installation
 
