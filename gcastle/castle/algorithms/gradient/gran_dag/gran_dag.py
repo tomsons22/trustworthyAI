@@ -267,6 +267,9 @@ class GraNDAG(BaseLearner):
         #     else:
         #         torch.set_default_tensor_type('torch.DoubleTensor')
 
+        # Fix batch_size in case of small dataset
+        self.batch_size = min(self.batch_size, int(data.shape[0] / 2))
+
         # create learning model and ground truth model
         if isinstance(data, np.ndarray):
             data = data
