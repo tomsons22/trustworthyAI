@@ -31,6 +31,7 @@ from .utils.lbfgsb_scipy import LBFGSBScipy
 
 from castle.common import BaseLearner, Tensor
 
+# torch.set_default_dtype(torch.float32)
 # torch.set_default_dtype(torch.double)
 np.set_printoptions(precision=3)
 
@@ -66,7 +67,8 @@ class NotearsMLP(BaseLearner):
     """
     
     def __init__(self):
-        torch.set_default_dtype(torch.double)
+        # torch.set_default_dtype(torch.double)
+        # torch.set_default_dtype(torch.float32)
         super().__init__()
     
     def learn(self, data):
@@ -122,7 +124,8 @@ class NotearsSob(BaseLearner):
     """
     
     def __init__(self):
-        torch.set_default_dtype(torch.double)
+        # torch.set_default_dtype(torch.double)
+        # torch.set_default_dtype(torch.float32)
         super().__init__()
     
     def learn(self, data):
