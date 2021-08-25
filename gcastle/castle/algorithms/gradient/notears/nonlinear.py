@@ -66,7 +66,7 @@ class NotearsMLP(BaseLearner):
     """
     
     def __init__(self):
-
+        torch.set_default_dtype(torch.double)
         super().__init__()
     
     def learn(self, data):
