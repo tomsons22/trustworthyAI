@@ -35,6 +35,9 @@ from castle.common import BaseLearner, Tensor
 torch.set_default_dtype(torch.double)
 np.set_printoptions(precision=3)
 
+# torch.set_default_tensor_type('torch.cuda.DoubleTensor')
+# torch.set_default_tensor_type('torch.DoubleTensor')
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(message)s')
 
 
@@ -89,6 +92,7 @@ class NotearsMLP(BaseLearner):
                             'Tensor or numpy.ndarray, but got {}'
                             .format(type(data)))
 
+        X = X.astype(np.float64)
         d = X.shape[1]
         model = MLPModel(dims=[d, 10, 1], bias=True)
         W_est = notears_nonlinear(model, X, lambda1=0.01, lambda2=0.01)
@@ -219,6 +223,7 @@ def notears_nonlinear(model: nn.Module,
 
 class MLPModel(nn.Module):
     def __init__(self, dims, bias=True):
+        torch.set_default_dtype(torch.double)
         super().__init__()
         assert len(dims) >= 2
         assert dims[-1] == 1
