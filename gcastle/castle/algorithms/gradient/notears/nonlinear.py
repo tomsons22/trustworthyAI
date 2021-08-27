@@ -67,7 +67,7 @@ class NotearsMLP(BaseLearner):
     """
     
     def __init__(self):
-        # torch.set_default_dtype(torch.double)
+        torch.set_default_dtype(torch.double)
         # torch.set_default_dtype(torch.float32)
         super().__init__()
     
@@ -124,7 +124,7 @@ class NotearsSob(BaseLearner):
     """
     
     def __init__(self):
-        # torch.set_default_dtype(torch.double)
+        torch.set_default_dtype(torch.double)
         # torch.set_default_dtype(torch.float32)
         super().__init__()
     
