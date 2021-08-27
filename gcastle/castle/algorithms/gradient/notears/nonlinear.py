@@ -166,6 +166,11 @@ def dual_ascent_step(model, X, lambda1, lambda2, rho, alpha, h, rho_max):
     """
     Perform one step of dual ascent in augmented Lagrangian.
     """
+    print("============================")
+    print("============================")
+    print("============================")
+    print("============================")
+    print("============================")
     h_new = None
     optimizer = LBFGSBScipy(model.parameters())
     X_torch = torch.from_numpy(X)
