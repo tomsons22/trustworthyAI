@@ -197,7 +197,7 @@ class GraNDAG(BaseLearner):
                  nonlinear='leaky-relu',
                  optimizer='rmsprop',
                  h_threshold=1e-8,
-                 gpu=False,
+                 gpu=True,
                  pns=False,
                  pns_thresh=0.75,
                  num_neighbors=None,
