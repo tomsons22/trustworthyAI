@@ -31,12 +31,9 @@ from .utils.lbfgsb_scipy import LBFGSBScipy
 
 from castle.common import BaseLearner, Tensor
 
-# torch.set_default_dtype(torch.float32)
-torch.set_default_dtype(torch.double)
+torch.set_default_dtype(torch.float32)
+# torch.set_default_dtype(torch.double)
 np.set_printoptions(precision=3)
-
-# torch.set_default_tensor_type('torch.cuda.DoubleTensor')
-# torch.set_default_tensor_type('torch.DoubleTensor')
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(message)s')
 
@@ -70,7 +67,7 @@ class NotearsMLP(BaseLearner):
     """
     
     def __init__(self):
-        torch.set_default_dtype(torch.double)
+        # torch.set_default_dtype(torch.double)
         # torch.set_default_dtype(torch.float32)
         super().__init__()
     
@@ -92,7 +89,6 @@ class NotearsMLP(BaseLearner):
                             'Tensor or numpy.ndarray, but got {}'
                             .format(type(data)))
 
-        X = X.astype(np.float64)
         d = X.shape[1]
         model = MLPModel(dims=[d, 10, 1], bias=True)
         W_est = notears_nonlinear(model, X, lambda1=0.01, lambda2=0.01)
@@ -128,8 +124,8 @@ class NotearsSob(BaseLearner):
     """
     
     def __init__(self):
-        torch.set_default_dtype(torch.double)
-        # torch.set_default_dtype(torch.float32)
+        # torch.set_default_dtype(torch.double)
+        torch.set_default_dtype(torch.float32)
         super().__init__()
     
     def learn(self, data):
@@ -166,11 +162,6 @@ def dual_ascent_step(model, X, lambda1, lambda2, rho, alpha, h, rho_max):
     """
     Perform one step of dual ascent in augmented Lagrangian.
     """
-    print("============================")
-    print("============================")
-    print("============================")
-    print("============================")
-    print("============================")
     h_new = None
     optimizer = LBFGSBScipy(model.parameters())
     X_torch = torch.from_numpy(X)
@@ -228,7 +219,6 @@ def notears_nonlinear(model: nn.Module,
 
 class MLPModel(nn.Module):
     def __init__(self, dims, bias=True):
-        torch.set_default_dtype(torch.double)
         super().__init__()
         assert len(dims) >= 2
         assert dims[-1] == 1
