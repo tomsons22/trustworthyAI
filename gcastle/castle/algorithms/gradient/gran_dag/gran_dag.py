@@ -33,7 +33,6 @@ from castle.common import BaseLearner, Tensor
 class NormalizationData(object):
     """
     Create Normalization Data object
-
     Parameters
     ----------
     data : numpy.ndarray
@@ -84,12 +83,10 @@ class NormalizationData(object):
 
     def sample(self, batch_size):
         """sampling from self.dataset
-
         Parameters
         ----------
         batch_size : int
             batch size of sample
-
         Returns
         -------
         samples : torch.Tensor
@@ -107,12 +104,9 @@ class NormalizationData(object):
 class GraNDAG(BaseLearner):
     """
     Gradient Based Neural DAG Learner
-
     A gradient-based algorithm using neural network modeling for
     non-linear additive noise data
-
     References: https://arxiv.org/pdf/1906.02226.pdf
-
     Parameters
     ----------
     input_dim : int
@@ -171,16 +165,13 @@ class GraNDAG(BaseLearner):
         number of iterations for updating values
     edge_clamp_range : float, default 0.0001
         threshold for keeping the edge (if during training
-
     Examples
     --------
         Load data
     >>> from castle.datasets import load_dataset
     >>> target, data = load_dataset(name='iid_test')
-
     >>> gnd = GraNDAG(input_dim=data.shape[1])
     >>> gnd.learn(data=data)
-
         Also print GraN_DAG.model.adjacency with torch.Tensor type
         or print GranN_DAG.causal_matrix with numpy.ndarray.
     >>> print(gnd.causal_matrix)
@@ -244,7 +235,6 @@ class GraNDAG(BaseLearner):
 
     def learn(self, data, *args, **kwargs):
         """Set up and run the Gran-DAG algorithm
-
         Parameters
         ----------
         data: numpy.ndarray or Tensor
@@ -266,9 +256,6 @@ class GraNDAG(BaseLearner):
                 torch.set_default_tensor_type('torch.FloatTensor')
             else:
                 torch.set_default_tensor_type('torch.DoubleTensor')
-
-        # Fix batch_size in case of small dataset
-        self.batch_size = min(self.batch_size, int(data.shape[0] / 2))
 
         # create learning model and ground truth model
         if isinstance(data, np.ndarray):
@@ -333,7 +320,6 @@ class GraNDAG(BaseLearner):
     def _train(self, train_data, test_data):
         """
         Applying augmented Lagrangian to solve the continuous constrained problem.
-
         Parameters
         ----------
         train_data: NormalizationData
@@ -481,7 +467,6 @@ class GraNDAG(BaseLearner):
         1- If some entries of A_\phi == 0, also mask them
         (This can happen with stochastic proximal gradient descent)
         2- Remove edges (from weaker to stronger) until a DAG is obtained.
-
         Parameters
         ----------
         train_data : NormalizationData
@@ -521,7 +506,6 @@ def neighbors_selection(model, all_samples, num_neighbors, thresh):
     """
     Preliminary neighborhood selection
     After pns, just model.adjacency is changed. if nodes > 50, use it.
-
     Parameters
     ----------
     model: model object
@@ -531,7 +515,6 @@ def neighbors_selection(model, all_samples, num_neighbors, thresh):
         variable number or neighbors number you want
     thresh: float
         apply for sklearn.feature_selection.SelectFromModel
-
     Returns
     -------
     out: model
@@ -547,7 +530,6 @@ def neighbors_selection(model, all_samples, num_neighbors, thresh):
 
 def _pns(model_adj, all_samples, num_neighbors, thresh):
     """Preliminary neighborhood selection
-
     Parameters
     ----------
     model_adj : numpy.ndarray
@@ -558,7 +540,6 @@ def _pns(model_adj, all_samples, num_neighbors, thresh):
         variable number or neighbors number you want
     thresh: float
         apply for sklearn.feature_selection.SelectFromModel
-
     Returns
     -------
     model_adj : numpy.ndarray
