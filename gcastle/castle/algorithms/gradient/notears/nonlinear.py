@@ -31,7 +31,7 @@ from .utils.lbfgsb_scipy import LBFGSBScipy
 
 from castle.common import BaseLearner, Tensor
 
-torch.set_default_dtype(torch.double)
+# torch.set_default_dtype(torch.double)
 np.set_printoptions(precision=3)
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(message)s')

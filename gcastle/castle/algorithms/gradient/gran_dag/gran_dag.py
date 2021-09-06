@@ -245,17 +245,17 @@ class GraNDAG(BaseLearner):
         torch.manual_seed(self.random_seed)
         np.random.seed(self.random_seed)
 
-        # Use GPU
-        if self.gpu:
-            if self.precision:
-                torch.set_default_tensor_type('torch.cuda.FloatTensor')
-            else:
-                torch.set_default_tensor_type('torch.cuda.DoubleTensor')
-        else:
-            if self.precision:
-                torch.set_default_tensor_type('torch.FloatTensor')
-            else:
-                torch.set_default_tensor_type('torch.DoubleTensor')
+        # # Use GPU
+        # if self.gpu:
+        #     if self.precision:
+        #         torch.set_default_tensor_type('torch.cuda.FloatTensor')
+        #     else:
+        #         torch.set_default_tensor_type('torch.cuda.DoubleTensor')
+        # else:
+        #     if self.precision:
+        #         torch.set_default_tensor_type('torch.FloatTensor')
+        #     else:
+        #         torch.set_default_tensor_type('torch.DoubleTensor')
 
         # create learning model and ground truth model
         if isinstance(data, np.ndarray):
