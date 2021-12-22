@@ -183,7 +183,7 @@ class GraNDAG(BaseLearner):
                  hidden_dim=10,
                  batch_size=64,
                  lr=0.001,
-                 iterations=10000,
+                 iterations=100000,
                  model_name='NonLinGaussANM',
                  nonlinear='leaky-relu',
                  optimizer='rmsprop',
